@@ -10,8 +10,8 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
     //optimised for loops with loop blocking
     for(int ii = 0; ii < m; ii+=block_size){
         for(int jj = 0; jj < n; jj+=block_size){
-            for(int i=ii; i < block_size, i++) {
-                for (int j=jj; j< blocksize; j++) {
+            for(int i=ii; i < block_size + ii && i < m, i++) {
+                for (int j=jj; j< block_size + jj && j < n; j++) {
             
                     // count the number of neighbours, clockwise around the current cell.
                     neighbours = 0;
