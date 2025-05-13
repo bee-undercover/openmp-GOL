@@ -8,6 +8,7 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
     int block_size = 16;
     
     //optimised for loops with loop blocking
+    #pragma omp parallel for collapse(2)
     for(int i = 0; i < m; i++){
         for(int j = 0; j < n; j++){
             // count the number of neighbours, clockwise around the current cell.
