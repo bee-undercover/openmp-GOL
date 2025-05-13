@@ -3,12 +3,9 @@
 void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n, int m){
     int neighbours;
     int n_i[8], n_j[8];
-    
-    //defining a block size for loop blocking
-    int block_size = 16;
-    
-    //optimised for loops with loop blocking
-    #pragma omp parallel for collapse(2)
+
+    #pragma omp parallel shared(current_grid,next_grid,opt,n,m) private(i,j,neighbours,n_i,n_j)
+    #pragma omp for collapse(2) schedule(static,block_size)
     for(int i = 0; i < m; i++){
         for(int j = 0; j < n; j++){
             // count the number of neighbours, clockwise around the current cell.
