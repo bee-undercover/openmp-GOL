@@ -44,8 +44,7 @@ void game_of_life_stats(struct Options *opt, int step, int *current_grid){
     unsigned long long num_in_state[NUMSTATES];
     int m = opt->m, n = opt->n;
     for(int i = 0; i < NUMSTATES; i++) num_in_state[i] = 0;
-    
-    int block_size=16;                    
+             
     for(int j = 0; j < m; j++){
         for(int i = 0; i < n; i++){
             num_in_state[current_grid[i*m + j]]++;
